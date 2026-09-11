@@ -1,0 +1,18 @@
+# Local pairing keys and runtime state
+.lg-tv-*-key
+.lg-tv-client-key
+.mac-notification-bridge.state
+
+# Logs and captured local data
+*.log
+inventory-full.json
+recent-notifications-debug.json
+notification-db-inspect.json
+
+# Generated app bundle and Python cache
+LG TV Bridge.app/
+__pycache__/
+*.pyc
+
+# macOS clutter
+.DS_Store
