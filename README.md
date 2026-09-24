@@ -11,7 +11,7 @@ The bridge uses the LG webOS websocket API on port `3001`. It does not require r
 - Parses WhatsApp direct and group notifications.
 - Sends notifications to the TV via `ssap://system.notifications/createToast`.
 - Keeps a local state file to avoid replaying old notifications.
-- Filters noisy apps like iTerm by default.
+- Filters noisy apps like Script Editor by default.
 - Exposes a menu bar app with forwarding enable/disable.
 
 ## Files
@@ -59,7 +59,7 @@ Environment variables:
 Default denylist:
 
 ```text
-com.googlecode.iterm2,com.apple.ScriptEditor2
+com.apple.ScriptEditor2
 ```
 
 ## Notes

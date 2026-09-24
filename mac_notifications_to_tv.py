@@ -26,7 +26,7 @@ DENY_BUNDLES = {
     bundle.strip()
     for bundle in os.environ.get(
         "MAC_NOTIFICATION_DENY_BUNDLES",
-        "com.googlecode.iterm2,com.apple.ScriptEditor2",
+        "com.apple.ScriptEditor2",
     ).split(",")
     if bundle.strip()
 }
