@@ -552,7 +552,8 @@ def compact_message(text):
 
 
 def watch_paths_for_db(path):
-    return [path, Path(str(path) + "-wal"), Path(str(path) + "-shm")]
+    # -shm is touched by every reader (including us), which would retrigger kqueue in a loop.
+    return [path, Path(str(path) + "-wal")]
 
 
 def build_kqueue(dbs):
@@ -571,7 +572,7 @@ def build_kqueue(dbs):
     for db in dbs:
         for path in watch_paths_for_db(db):
             try:
-                fd = os.open(path, os.O_EVTONLY)
+                fd = os.open(path, getattr(os, "O_EVTONLY", 0x8000))
             except FileNotFoundError:
                 continue
             except OSError:
@@ -626,7 +627,11 @@ def process_once(dbs, state, first_run, db_signatures, toast, force=False):
         latest = max(latest, event["ts"])
         message = compact_message(event["text"])
         if message:
-            response = toast.send(message)
+            try:
+                response = toast.send(message)
+            except OSError as exc:
+                log(f"TV'ye ulaşılamadı [{event['source']}]: {message} -> {exc}")
+                continue
             if response.get("type") == "response":
                 log(f"TV toast OK [{event['source']}]: {message}")
             else:

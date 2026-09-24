@@ -5,7 +5,7 @@ import sys
 from webos_client import WebSocket
 
 
-TV_HOST = os.environ.get("LG_TV_HOST", "192.168.1.130")
+TV_HOST = os.environ.get("LG_TV_HOST", "192.168.1.103")
 TV_PORT = int(os.environ.get("LG_TV_PORT", "3001"))
 KEY_FILE = os.environ.get("LG_TV_TOAST_KEY_FILE", ".lg-tv-toast-key")
 LEGACY_KEY_FILE = os.environ.get("LG_TV_KEY_FILE", ".lg-tv-client-key")

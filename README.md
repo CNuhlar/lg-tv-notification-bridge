@@ -48,7 +48,7 @@ The app needs this to read Notification Center's local database.
 
 Environment variables:
 
-- `LG_TV_HOST` - default `192.168.1.130`
+- `LG_TV_HOST` - default `192.168.1.103`
 - `LG_TV_PORT` - default `3001`
 - `LG_TV_TOAST_KEY_FILE` - default `.lg-tv-toast-key`
 - `MAC_NOTIFICATION_DENY_BUNDLES` - comma-separated bundle IDs to ignore
